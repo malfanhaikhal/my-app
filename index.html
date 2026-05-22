@@ -3,173 +3,236 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Testimoni</title>
+  <title>Mandiri Maju – Toko Makanan Sehat</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f5f7fa;
-      color: #333;
-      min-height: 100vh;
+    :root {
+      --green:  #2d7a4f;
+      --green2: #3aaa6e;
+      --lime:   #a8e063;
+      --cream:  #f9f6ee;
+      --dark:   #1a2e22;
+      --text:   #3b4a3e;
+      --radius: 14px;
     }
 
-    header {
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      color: #fff;
-      text-align: center;
-      padding: 64px 24px 48px;
+    body { font-family: 'Poppins', sans-serif; background: var(--cream); color: var(--text); line-height: 1.6; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(249,246,238,0.94); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 6%; border-bottom: 1px solid #dde8dc;
     }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-icon { width: 38px; height: 38px; background: var(--green); border-radius: 50%; display: grid; place-items: center; font-size: 20px; }
+    .logo-text { font-size: 1.2rem; font-weight: 700; color: var(--dark); }
+    .logo-text span { color: var(--green2); }
+    nav ul { list-style: none; display: flex; gap: 28px; }
+    nav a { text-decoration: none; color: var(--text); font-weight: 600; font-size: .9rem; transition: color .2s; }
+    nav a:hover { color: var(--green); }
+    .nav-cta { background: var(--green); color: #fff !important; padding: 9px 22px; border-radius: 50px; }
+    .nav-cta:hover { background: var(--green2) !important; }
 
-    header h1 { font-size: 2.4rem; margin-bottom: 12px; }
-    header p  { font-size: 1.1rem; opacity: .85; }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      max-width: 1000px;
-      margin: 48px auto;
-      padding: 0 24px;
+    /* HERO */
+    .hero {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; min-height: 92vh; padding: 80px 6% 60px;
+      background: linear-gradient(160deg, #e8f5e0 0%, var(--cream) 60%);
+      position: relative; overflow: hidden;
     }
-
-    .card {
-      background: #fff;
-      border-radius: 16px;
-      padding: 28px 24px;
-      box-shadow: 0 4px 20px rgba(0,0,0,.07);
-      transition: transform .2s, box-shadow .2s;
+    .hero::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%232d7a4f' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/svg%3E");
     }
+    .badge { display: inline-block; background: #d4edda; color: var(--green); font-size: .78rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 6px 16px; border-radius: 50px; margin-bottom: 22px; border: 1px solid #b2dfbb; }
+    .hero h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 800; color: var(--dark); line-height: 1.15; max-width: 700px; margin-bottom: 18px; }
+    .hero h1 em { color: var(--green2); font-style: normal; }
+    .hero p { max-width: 520px; font-size: 1.05rem; color: #5a6e5c; margin-bottom: 36px; }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+    .btn { padding: 14px 32px; border-radius: 50px; font-weight: 700; font-size: .95rem; text-decoration: none; transition: all .25s; display: inline-block; }
+    .btn-primary { background: var(--green); color: #fff; }
+    .btn-primary:hover { background: var(--green2); transform: translateY(-2px); box-shadow: 0 8px 24px #2d7a4f44; }
+    .btn-outline { background: transparent; border: 2px solid var(--green); color: var(--green); }
+    .btn-outline:hover { background: var(--green); color: #fff; transform: translateY(-2px); }
+    .hero-emoji { margin-top: 52px; font-size: 90px; animation: float 3.5s ease-in-out infinite; }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
 
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 28px rgba(0,0,0,.12);
-    }
+    /* STATS */
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 16px; padding: 0 6% 70px; }
+    .stat-card { background: #fff; border-radius: var(--radius); padding: 28px 20px; text-align: center; border: 1px solid #e0eada; box-shadow: 0 2px 12px #2d7a4f0d; }
+    .stat-card .num { font-size: 2rem; font-weight: 800; color: var(--green); }
+    .stat-card .lbl { font-size: .85rem; color: #7a8f7d; margin-top: 4px; }
 
-    .stars { color: #f59e0b; font-size: 1.2rem; margin-bottom: 14px; }
+    /* SECTIONS */
+    section { padding: 70px 6%; }
+    .section-label { display: inline-block; font-size: .78rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--green2); margin-bottom: 10px; }
+    h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 800; color: var(--dark); margin-bottom: 10px; }
+    .sub { color: #6a7e6d; font-size: 1rem; max-width: 480px; margin-bottom: 40px; }
 
-    .card blockquote {
-      font-size: .97rem;
-      line-height: 1.65;
-      color: #555;
-      margin-bottom: 20px;
-    }
+    /* PRODUK */
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px,1fr)); gap: 24px; }
+    .product-card { background: #fff; border-radius: var(--radius); border: 1px solid #e0eada; overflow: hidden; transition: transform .25s, box-shadow .25s; }
+    .product-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px #2d7a4f1a; }
+    .product-img { background: linear-gradient(135deg,#e8f5e0,#c8ead0); height: 150px; display: grid; place-items: center; font-size: 64px; }
+    .product-info { padding: 18px; }
+    .product-info h3 { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+    .product-info p { font-size: .83rem; color: #8a9e8d; margin-bottom: 12px; }
+    .price { font-size: 1.05rem; font-weight: 800; color: var(--green); }
 
-    .author {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+    /* FITUR */
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px,1fr)); gap: 24px; }
+    .feature-card { background: #fff; border-radius: var(--radius); padding: 30px 24px; border: 1px solid #e0eada; }
+    .feature-icon { font-size: 36px; margin-bottom: 14px; }
+    .feature-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+    .feature-card p { font-size: .88rem; color: #7a8f7d; }
 
-    .avatar {
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: #fff;
-      flex-shrink: 0;
-    }
+    /* TESTI */
+    .testi-section { background: #fff; }
+    .testi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 24px; }
+    .testi-card { background: var(--cream); border-radius: var(--radius); padding: 28px; border: 1px solid #e0eada; }
+    .stars { color: #f5a623; font-size: 1.1rem; margin-bottom: 12px; }
+    .testi-card p { font-size: .92rem; color: var(--text); margin-bottom: 18px; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--green), var(--lime)); display: grid; place-items: center; font-size: 18px; flex-shrink: 0; }
+    .author-name { font-weight: 700; font-size: .9rem; color: var(--dark); }
+    .author-loc { font-size: .78rem; color: #8a9e8d; }
 
-    .author-info .name  { font-weight: 600; font-size: .95rem; }
-    .author-info .role  { font-size: .82rem; color: #888; }
+    /* CTA */
+    .cta-section { background: linear-gradient(135deg, var(--green) 0%, var(--green2) 100%); text-align: center; border-radius: 24px; margin: 0 6% 70px; padding: 70px 40px; color: #fff; }
+    .cta-section h2 { color: #fff; }
+    .cta-section p { color: rgba(255,255,255,.85); max-width: 500px; margin: 12px auto 36px; }
+    .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-white { background: #fff; color: var(--green); }
+    .btn-white:hover { background: var(--lime); color: var(--dark); transform: translateY(-2px); box-shadow: 0 8px 24px #00000033; }
+    .btn-ghost { background: transparent; border: 2px solid #fff; color: #fff; }
+    .btn-ghost:hover { background: rgba(255,255,255,.15); transform: translateY(-2px); }
 
-    footer {
-      text-align: center;
-      padding: 32px;
-      font-size: .85rem;
-      color: #aaa;
+    /* FOOTER */
+    footer { background: var(--dark); color: rgba(255,255,255,.65); text-align: center; padding: 32px 6%; font-size: .85rem; }
+    footer strong { color: #fff; }
+
+    @media(max-width:640px){
+      nav ul { display: none; }
+      .hero h1 { font-size: 2rem; }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>Apa Kata Mereka?</h1>
-  <p>Ribuan pelanggan sudah merasakan manfaatnya — ini cerita mereka.</p>
-</header>
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#">
+    <div class="logo-icon">🌿</div>
+    <span class="logo-text">Mandiri <span>Maju</span></span>
+  </a>
+  <ul>
+    <li><a href="#produk">Produk</a></li>
+    <li><a href="#keunggulan">Keunggulan</a></li>
+    <li><a href="#testimoni">Testimoni</a></li>
+    <li><a href="#kontak" class="nav-cta">Pesan Sekarang</a></li>
+  </ul>
+</nav>
 
-<section class="cards">
-
-  <div class="card">
-    <div class="stars">★★★★★</div>
-    <blockquote>"Produknya luar biasa! Kualitas jauh melampaui ekspektasi saya. Proses pembelian juga sangat mudah dan pengiriman cepat."</blockquote>
-    <div class="author">
-      <div class="avatar" style="background:#667eea;">A</div>
-      <div class="author-info">
-        <div class="name">Andi Pratama</div>
-        <div class="role">Product Designer · Jakarta</div>
-      </div>
-    </div>
+<!-- HERO -->
+<section class="hero">
+  <div class="badge">🌱 100% Alami &amp; Organik</div>
+  <h1>Sehat Itu <em>Lezat</em><br>dan Terjangkau</h1>
+  <p>Mandiri Maju hadir membawa pilihan makanan sehat berkualitas tinggi, langsung ke tangan Anda. Segar, alami, dan penuh manfaat.</p>
+  <div class="hero-btns">
+    <a href="#produk" class="btn btn-primary">Lihat Produk</a>
+    <a href="#kontak" class="btn btn-outline">Hubungi Kami</a>
   </div>
-
-  <div class="card">
-    <div class="stars">★★★★★</div>
-    <blockquote>"Customer service-nya responsif banget. Masalah saya langsung diselesaikan dalam hitungan menit. Definitely akan beli lagi!"</blockquote>
-    <div class="author">
-      <div class="avatar" style="background:#764ba2;">S</div>
-      <div class="author-info">
-        <div class="name">Siti Rahma</div>
-        <div class="role">Freelancer · Bandung</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="stars">★★★★☆</div>
-    <blockquote>"Sudah pakai selama 3 bulan dan hasilnya konsisten. Harganya juga worth it banget untuk kualitas yang didapat."</blockquote>
-    <div class="author">
-      <div class="avatar" style="background:#f59e0b;">B</div>
-      <div class="author-info">
-        <div class="name">Budi Santoso</div>
-        <div class="role">Software Engineer · Surabaya</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="stars">★★★★★</div>
-    <blockquote>"Packaging-nya rapi dan produk sampai dalam kondisi sempurna. Teman-teman saya juga sudah saya rekomendasiin!"</blockquote>
-    <div class="author">
-      <div class="avatar" style="background:#10b981;">D</div>
-      <div class="author-info">
-        <div class="name">Dewi Kusuma</div>
-        <div class="role">Entrepreneur · Yogyakarta</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="stars">★★★★★</div>
-    <blockquote>"Ga nyangka secepat ini. Pesan malem, besok pagi udah di tangan. Top banget layanannya, ga ada cacat sedikitpun!"</blockquote>
-    <div class="author">
-      <div class="avatar" style="background:#ef4444;">R</div>
-      <div class="author-info">
-        <div class="name">Rizky Fauzan</div>
-        <div class="role">Content Creator · Bekasi</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="stars">★★★★★</div>
-    <blockquote>"Sudah jadi pelanggan setia sejak 2022. Kualitas selalu terjaga, harga stabil, dan promo-nya sering banget. Recommended!"</blockquote>
-    <div class="author">
-      <div class="avatar" style="background:#3b82f6;">M</div>
-      <div class="author-info">
-        <div class="name">Maya Indah</div>
-        <div class="role">Teacher · Medan</div>
-      </div>
-    </div>
-  </div>
-
+  <div class="hero-emoji">🥗</div>
 </section>
 
+<!-- STATS -->
+<div class="stats">
+  <div class="stat-card"><div class="num">500+</div><div class="lbl">Pelanggan Puas</div></div>
+  <div class="stat-card"><div class="num">50+</div><div class="lbl">Produk Sehat</div></div>
+  <div class="stat-card"><div class="num">3 Thn</div><div class="lbl">Pengalaman</div></div>
+  <div class="stat-card"><div class="num">4.9★</div><div class="lbl">Rating Pelanggan</div></div>
+</div>
+
+<!-- PRODUK -->
+<section id="produk">
+  <span class="section-label">Menu Pilihan</span>
+  <h2>Produk Unggulan Kami</h2>
+  <p class="sub">Dibuat dari bahan-bahan segar pilihan, tanpa pengawet, tanpa pewarna buatan.</p>
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-img">🥤</div>
+      <div class="product-info"><h3>Smoothie Bowl Organik</h3><p>Campuran buah segar &amp; granola renyah</p><span class="price">Rp 35.000</span></div>
+    </div>
+    <div class="product-card">
+      <div class="product-img">🥙</div>
+      <div class="product-info"><h3>Wrap Quinoa Sayur</h3><p>Protein tinggi, serat lengkap</p><span class="price">Rp 42.000</span></div>
+    </div>
+    <div class="product-card">
+      <div class="product-img">🍱</div>
+      <div class="product-info"><h3>Bento Sehat Harian</h3><p>Nasi merah, lauk bergizi, sayuran</p><span class="price">Rp 55.000</span></div>
+    </div>
+    <div class="product-card">
+      <div class="product-img">🍪</div>
+      <div class="product-info"><h3>Oat Cookies Madu</h3><p>Snack sehat, bebas gula rafinasi</p><span class="price">Rp 28.000</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- KEUNGGULAN -->
+<section id="keunggulan" style="background:#f0f7ec;">
+  <span class="section-label">Mengapa Kami</span>
+  <h2>Keunggulan Mandiri Maju</h2>
+  <p class="sub">Kami berkomitmen untuk kualitas terbaik di setiap gigitan.</p>
+  <div class="features-grid">
+    <div class="feature-card"><div class="feature-icon">🌿</div><h3>Bahan 100% Alami</h3><p>Semua bahan dipilih langsung dari petani lokal terpercaya, bebas pestisida berlebih.</p></div>
+    <div class="feature-card"><div class="feature-icon">⚡</div><h3>Pengiriman Cepat</h3><p>Pesan sebelum jam 11 siang, terima di hari yang sama dalam radius 10 km.</p></div>
+    <div class="feature-card"><div class="feature-icon">💰</div><h3>Harga Terjangkau</h3><p>Sehat tidak harus mahal. Kami pastikan kualitas premium dengan harga yang bersahabat.</p></div>
+    <div class="feature-card"><div class="feature-icon">🔬</div><h3>Nilai Gizi Terjamin</h3><p>Setiap produk diformulasikan oleh ahli gizi untuk memastikan keseimbangan nutrisi optimal.</p></div>
+  </div>
+</section>
+
+<!-- TESTIMONI -->
+<section id="testimoni" class="testi-section">
+  <span class="section-label">Testimoni</span>
+  <h2>Kata Mereka 💬</h2>
+  <p class="sub">Ribuan pelanggan sudah merasakan manfaatnya.</p>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"Smoothie bowl-nya enak banget dan bikin kenyang lama! Sudah langganan 6 bulan dan nggak mau pindah."</p>
+      <div class="testi-author"><div class="avatar">😊</div><div><div class="author-name">Rina Kartika</div><div class="author-loc">Jakarta Selatan</div></div></div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"Bento sehatnya jadi andalan makan siang kantor. Harga masuk akal, kualitas juara. Recommended!"</p>
+      <div class="testi-author"><div class="avatar">😄</div><div><div class="author-name">Budi Santoso</div><div class="author-loc">Depok</div></div></div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"Anak-anak suka snack oat cookies-nya! Akhirnya nemu camilan sehat yang disukai seluruh keluarga."</p>
+      <div class="testi-author"><div class="avatar">🥰</div><div><div class="author-name">Siti Rahayu</div><div class="author-loc">Bekasi</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / KONTAK -->
+<div id="kontak" class="cta-section">
+  <h2>Siap Memulai Hidup Sehat?</h2>
+  <p>Pesan sekarang dan dapatkan gratis ongkir untuk pembelian pertama Anda!</p>
+  <div class="cta-btns">
+    <a href="https://wa.me/6281234567890?text=Halo%20Mandiri%20Maju%2C%20saya%20mau%20pesan!" class="btn btn-white" target="_blank">💬 WhatsApp Kami</a>
+    <a href="mailto:mandiri.maju@email.com" class="btn btn-ghost">✉️ Email Kami</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
 <footer>
-  &copy; 2026 · Dibuat dengan ❤️ menggunakan vanilla HTML
+  <p>© 2026 <strong>Mandiri Maju</strong> – Toko Makanan Sehat. Semua hak dilindungi.</p>
+  <p style="margin-top:6px;">📍 Jakarta, Indonesia &nbsp;|&nbsp; 📞 +62 812-3456-7890 &nbsp;|&nbsp; ✉️ mandiri.maju@email.com</p>
 </footer>
 
 </body>
