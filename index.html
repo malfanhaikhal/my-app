@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Testimoni</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f5f7fa;
+      color: #333;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #fff;
+      text-align: center;
+      padding: 64px 24px 48px;
+    }
+
+    header h1 { font-size: 2.4rem; margin-bottom: 12px; }
+    header p  { font-size: 1.1rem; opacity: .85; }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1000px;
+      margin: 48px auto;
+      padding: 0 24px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 28px 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,.07);
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 28px rgba(0,0,0,.12);
+    }
+
+    .stars { color: #f59e0b; font-size: 1.2rem; margin-bottom: 14px; }
+
+    .card blockquote {
+      font-size: .97rem;
+      line-height: 1.65;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .avatar {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .author-info .name  { font-weight: 600; font-size: .95rem; }
+    .author-info .role  { font-size: .82rem; color: #888; }
+
+    footer {
+      text-align: center;
+      padding: 32px;
+      font-size: .85rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Apa Kata Mereka?</h1>
+  <p>Ribuan pelanggan sudah merasakan manfaatnya — ini cerita mereka.</p>
+</header>
+
+<section class="cards">
+
+  <div class="card">
+    <div class="stars">★★★★★</div>
+    <blockquote>"Produknya luar biasa! Kualitas jauh melampaui ekspektasi saya. Proses pembelian juga sangat mudah dan pengiriman cepat."</blockquote>
+    <div class="author">
+      <div class="avatar" style="background:#667eea;">A</div>
+      <div class="author-info">
+        <div class="name">Andi Pratama</div>
+        <div class="role">Product Designer · Jakarta</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="stars">★★★★★</div>
+    <blockquote>"Customer service-nya responsif banget. Masalah saya langsung diselesaikan dalam hitungan menit. Definitely akan beli lagi!"</blockquote>
+    <div class="author">
+      <div class="avatar" style="background:#764ba2;">S</div>
+      <div class="author-info">
+        <div class="name">Siti Rahma</div>
+        <div class="role">Freelancer · Bandung</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="stars">★★★★☆</div>
+    <blockquote>"Sudah pakai selama 3 bulan dan hasilnya konsisten. Harganya juga worth it banget untuk kualitas yang didapat."</blockquote>
+    <div class="author">
+      <div class="avatar" style="background:#f59e0b;">B</div>
+      <div class="author-info">
+        <div class="name">Budi Santoso</div>
+        <div class="role">Software Engineer · Surabaya</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="stars">★★★★★</div>
+    <blockquote>"Packaging-nya rapi dan produk sampai dalam kondisi sempurna. Teman-teman saya juga sudah saya rekomendasiin!"</blockquote>
+    <div class="author">
+      <div class="avatar" style="background:#10b981;">D</div>
+      <div class="author-info">
+        <div class="name">Dewi Kusuma</div>
+        <div class="role">Entrepreneur · Yogyakarta</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="stars">★★★★★</div>
+    <blockquote>"Ga nyangka secepat ini. Pesan malem, besok pagi udah di tangan. Top banget layanannya, ga ada cacat sedikitpun!"</blockquote>
+    <div class="author">
+      <div class="avatar" style="background:#ef4444;">R</div>
+      <div class="author-info">
+        <div class="name">Rizky Fauzan</div>
+        <div class="role">Content Creator · Bekasi</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="stars">★★★★★</div>
+    <blockquote>"Sudah jadi pelanggan setia sejak 2022. Kualitas selalu terjaga, harga stabil, dan promo-nya sering banget. Recommended!"</blockquote>
+    <div class="author">
+      <div class="avatar" style="background:#3b82f6;">M</div>
+      <div class="author-info">
+        <div class="name">Maya Indah</div>
+        <div class="role">Teacher · Medan</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  &copy; 2026 · Dibuat dengan ❤️ menggunakan vanilla HTML
+</footer>
+
+</body>
+</html>
